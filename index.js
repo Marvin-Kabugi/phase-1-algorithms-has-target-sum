@@ -1,5 +1,26 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  const storage = {
+
+  };
+  let sub;
+
+
+  for (let i = 0; i < array.length; i++){
+    if (!storage[array[i]]){
+      storage[array[i]] = i;
+    }
+  }
+
+  console.log(storage);
+
+  for (let i = 0; i < array.length; i++){
+    sub = target - array[i];
+    if (storage[sub] !== undefined && storage[sub] !== i) {
+      return true;
+    }
+  }
+  return false
 }
 
 /* 
@@ -31,4 +52,5 @@ if (require.main === module) {
   console.log("=>", hasTargetSum([1, 2, 5], 4));
 }
 
+// console.log(hasTargetSum([22, 19, 4, 6, 30], 25))
 module.exports = hasTargetSum;
